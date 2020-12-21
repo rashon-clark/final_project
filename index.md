@@ -1,19 +1,55 @@
+
 ---
 layout: default
+toc: false
+toc_sticky: false
 altair-loader:
-  altair-chart-1: "charts/measlesAltair.json"
+  philadelphiarest: "charts/Philadelphia_Rest.json"
+  Distribution_of_Yelp_Ratings: "Distribution_of_Yelp_Ratings.json"
+  NumberofReviews: "NumberofReviews.json"
+  Ratings_by_Food_Vio: "Ratings_by_Food_Vio.json"
+  Ratings_by_Retail_Vio: "Ratings_by_Retail_Vio.json"
+
+  
 hv-loader:
-  hv-chart-1: ["charts/measlesHvplot.html", "500"] # second argument is the desired height
-folium-loader:
-  folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
-  folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
+  hv-chart-top_10: ["charts/Top_10_Inspection_Plot.html", "700"]
+  Average-Retail: ["charts/Average Retail Violations by Category.html", 700"]
+  Average-Food: ["charts/Average_Food_Violations_by_Category.html", 700]
+  NeighborListandPlot: ["charts/NeighborListandPlot.html", 700]
+  Top_10_Inspections: ["charts/Top_10_Inspection_Plot.html", 700]
+  Top_Categories: ["charts/Top_Cuisine_Categories.html", 700]
+  Top_Inspections: ["charts/Top_Inspections.html", 700]
+
+  
+  
+  
 ---
 
-# Welcome!
+# Yelp Ratings and Food Safety Inspections
 
-This single-page website demos how to display visualizations created with altair, hvplot, and folium.
+by Rashon Clark
 
-For examples of how to use markdown to style text, see this [this page](./another-page.html).
+
+## Introduction
+This project explores the relationship between Yelp restaurant ratings and food safety inspections from the Philadelphia Department of Health. We will interrogate the notion that customer satisfaction is really correlated with good sanitation practices, and if customers have any awareness of such problems. Yelp was chosen because of the availability of data and its longevity in the ratings sector, as well as its role as one of the broadest and widely used restaurant rating systems. Not only is it widely used by eaters, many establishments actively work to ensure positive ratings on the site. Similarly, the Department of Health is authority to which every food establishment is subject and with consistent standards.
+
+## Data
+Data from Yelp was drawn through the Yelp API and the food inspections data was scraped from the Philadelphia Inquirer’s portal for food inspections, which was made in conjunction with the Philadelphia Department of Health. The original dataset of Philadelphia restaurants on Yelp included about 20,000 entries and the scrapped inspections dataset included over 300,000 individual inspections. Nevertheless, once the two datasets were pared down to active restaurants, and those that had inspections, as well as unmergeable entries, the final merged dataset had about 1,500 restaurants. In general, the majority of these restaurants were concentrated in center city, the Passyunk area, Fishtown, and adjoining districts.
+
+<div id="philadelphiarest"></div>
+
+As can be seen in the below chart of the Top 20 Neighborhoods by inspections, Fishtown has the largest amount by many multiples of the rest. This may be a quirk of the two datasets, with Fishtown names and addresses merging better than other addresses. Fishtown may also have a more long-lived base of restaurants. Because the Yelp API only returns active restaurants, inspections from shuttered restaurants are invariably dropped from the dataset. Consequently, neighborhoods with a high business turnover at certain locations may have diminished visibility in the dataset.
+
+
+<div id="Top_10_Inspections"></div>
+
+
+
+
+<div id="NeighborListandPlot"></div>
+
+<div id="Distribution_of_Yelp_Ratings"></div>
+
 
 # Example: Embedding Altair & Hvplot Charts
 
@@ -22,7 +58,7 @@ This section will show examples of embedding interactive charts produced using [
 ## Altair Example
 
 Below is a chart of the incidence of measles since 1928 for the 50 US states.
-
+<div id="altair-chart-1"></div>
 <div id="altair-chart-1"></div>
 
 This was produced using Altair and embedded in this static web page. Note that you can also display Python code on this page:
@@ -32,35 +68,5 @@ import altair as alt
 alt.renderers.enable('notebook')
 ```
 
-## HvPlot Example
 
-Lastly, the measles incidence produced using the HvPlot package:
 
-<div id="hv-chart-1"></div>
-
-## Notes
-
-- See the [raw source code](https://raw.githubusercontent.com/MUSA-550-Fall-2020/github-pages-starter/master/_posts/2019-04-13-measles-charts.md) of this post for details on how these charts were embedded.
-- See the [lecture 13A slides](https://github.com/MUSA-550-Fall-2020/week-13/blob/master/lecture-13A.ipynb) for the code that produced these plots.
-
-**Important: When embedding charts, you will likely need to adjust the width/height of the charts before embedding them in the page so they fit nicely when embedded.**
-
-# Example: Embedding Folium charts
-
-This post will show examples of embedding interactive maps produced using [Folium](https://github.com/python-visualization/folium).
-
-## OSMnx and Street Networks
-
-The shortest route between the Art Museum and the Liberty Bell:
-
-<div id="folium-chart-1"></div>
-
-<br/>
-
-## Percentage of Households without Internet
-
-The percentage of households without internet by county:
-
-<div id="folium-chart-2"></div>
-
-See the [lecture 9B slides](https://musa-550-fall-2020.github.io/slides/lecture-9B.html) and the [lecture 10A slides](https://musa-550-fall-2020.github.io/slides/lecture-10A.html) for the code that produced these plots.
